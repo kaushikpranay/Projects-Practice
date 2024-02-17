@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <script>
+        async function populateDiv(){
+        const a = document.getElementById("First").value;
+        
+        const b = document.getElementById("Second").value;
+        // document.getElementById("final").innerHTML = b;
+        const response = await fetch("simple calculator with backend/calculator_backend.js/sum?a="+a+"&b="+b);
+        const ans = await response.text();
+
+        document.getElementById("final").innerHTML = ans;
+        }
+
+
+    </script>
+    <input onchange="populateDiv()" id="First" placeholder="First number" type="text">
+    <br></br>
+    <input onchange="populateDiv()" id="Second" placeholder="First number" type="text">
+    <div id="final"></div>
+</body>
+</html>
