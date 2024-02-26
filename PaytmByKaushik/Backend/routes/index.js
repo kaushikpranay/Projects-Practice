@@ -2,10 +2,20 @@ const express = require("express");
 const router = express.Router();
 
 const userRouter = require("./user");
-router.use("/user", userRouter);
+
+application.use("/api/v1", mainRouter);
+router.use("api/v1/user", userRouter);
+
+
+
+
+
+
+
+
 router.get('/', function (req, res, next){
 
-})
+})  
 
 router.get('/signIn', (req, res, next)=>{
 

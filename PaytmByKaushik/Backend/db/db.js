@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const zod = require("zod");
-mongoose.connect("mongodb+srv://KaushikPranay:xvCDracJaRzGEipj@cluster0.gswnwhf.mongodb.net/");
+mongoose.connect("mongodb+srv://KaushikPranay:xvCDracJaRzGEipj@cluster0.gswnwhf.mongodb.net/paytm");
 const userSchema = new mongoose.Schema({
     username: {
         type: zod.String.email,
@@ -30,11 +30,28 @@ const userSchema = new mongoose.Schema({
     }
 });
 
+const accountSchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "User", 
+        required: true
+    }, 
+    balance: {
+        type: Number, 
+        required: true
+    }
+});
+
+
+const Account = mongoose.model('Account', accountSchema);
+const User = mongoose.model('User', userSchema);
 
 
 
-const User = mongoose.model('Users', userSchema);
+
+
 
 module.exports = {
-    User
+    User,
+    Account
 };
