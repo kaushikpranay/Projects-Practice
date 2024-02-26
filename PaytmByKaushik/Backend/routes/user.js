@@ -1,6 +1,6 @@
 const express = require("express")
 const zod = require("zod");
-const {User} = require("../db");
+const {User} = require("../db/db");
 const jwt = require("jsonwebtoken");
 const {JWT_SECERT} = require("../config");
 const router = express.Router();
@@ -8,11 +8,11 @@ const {authMiddleware} = require("../middleware");
 const { Account } = require("../db/db");
 
 const signupBody = zod.object({
-    username: zod.String().email,
-    firstName: zod.String(),
-    lastname: zod.String(),
-    password: zod.password(),
-    phone: zod.phone()
+    username: zod.String,
+    firstName: zod.String,
+    lastname: zod.String,
+    password: zod.password,
+    phone: zod.phone
 })
 
 router.post("/signup", async (req, res)=>{
@@ -61,8 +61,8 @@ router.post("/signup", async (req, res)=>{
 
 
 const signinBody = zod.object({
-    username: zod.String().email,
-    password: zod.String()
+    username: zod.String,
+    password: zod.String
 })
 
 router.post("/signin", async(req, res)=>{
@@ -94,9 +94,9 @@ router.post("/signin", async(req, res)=>{
 })
 
 const updateBody = zod.object({
-    password: zod.password().optional(),
-    firstName: zod.String().optional(),
-    lastname: zod.String().optional()
+    password: zod.password,
+    firstName: zod.String,
+    lastname: zod.String
 })
 
 
