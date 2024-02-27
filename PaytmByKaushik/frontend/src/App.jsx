@@ -1,26 +1,27 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import {Signup} from "../pages/Signup"
 import './App.css'
-import { Signup } from './signup'
+
 function App() {
   return (
     <>
+    <div>
       <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Signup/>} />
-        {/* <Route path="/signin" element={<Signin />}/>
-        <Route path="/dashboard" element={<Dashboard />}/>
-        <Route path="/send" element={<SendMoney />}/> */}
-      </Routes>
+        <Routes>
+          <Route path='/' element={<Signup />}/>
+        </Routes>
       </BrowserRouter>
+    </div>
     </>
   )
 }
-
-
-
 
 export default App
