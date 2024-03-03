@@ -1,7 +1,7 @@
 
 export const Heading = ({label})=>{
     return (
-    <div className="text-purple-600"> 
+    <div className="text-center bg-blue-800"> 
         {label}
     </div>
 )}
